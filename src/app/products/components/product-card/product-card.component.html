@@ -1,0 +1,12 @@
+<div class="box">
+    
+    <div  class="box-body" *ngIf="product">
+        <!-- <ng-content></ng-content> -->
+        <br>
+        <br>
+        <img [src]="product.picture.large" alt=" ">
+        <input type="text" #input  name="Value" (keypress)='value = "input.value"' [disabled] = "isNumber(input.value)"/>
+        <h3  [textContent] = "input.value | titlecase"  ></h3>
+        <ng-content></ng-content>
+    </div>  
+</div>

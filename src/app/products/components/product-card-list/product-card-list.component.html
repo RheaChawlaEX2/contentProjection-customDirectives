@@ -1,0 +1,17 @@
+<ng-container *ngFor="let product of products" >
+    <app-product-card *ngIf="product.picture; else skeleton" [product]="product">
+        <ng-container *ngTemplateOutlet="gender; context: {genderPassed : product.gender}"></ng-container>
+        
+    </app-product-card>
+</ng-container>
+
+<ng-template #skeleton >
+        <br>
+    <h1>Skeleton</h1>
+</ng-template>
+
+<ng-template let-gender ="genderPassed" #gender>
+    <br>
+    <p>User is {{gender}}</p>
+</ng-template>
+
