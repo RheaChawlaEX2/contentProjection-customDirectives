@@ -5,8 +5,8 @@
         <br>
         <br>
         <img [src]="product.picture.large" alt=" ">
-        <input type="text" #input  name="Value" (keypress)='value = "input.value"' [disabled] = "isNumber(input.value)"/>
-        <h3  [textContent] = "input.value | titlecase"  ></h3>
+        <input type="text" inputString name="Value" #inputValue value = />
+        <h3 #result></h3>
         <ng-content></ng-content>
     </div>  
-</div>
+</div> 
