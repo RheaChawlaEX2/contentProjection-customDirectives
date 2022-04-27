@@ -19,9 +19,9 @@ export class StringDirective {
 
   @HostListener('keyup.space',['$event'])
   onKeyUp(event:KeyboardEvent){
-    if(this.onKeyPress(event) === true){
-      this.inputElement.nativeElement.value = this.titleCaseFormat(this.inputElement.nativeElement.value); 
-    } 
+    // if(this.onKeyPress(event) === true){
+      this.inputElement.nativeElement.textContent = this.titleCaseFormat(this.inputElement.nativeElement.textContent); 
+    // } 
     
   }
 

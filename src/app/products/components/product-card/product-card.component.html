@@ -3,10 +3,23 @@
     <div  class="box-body" *ngIf="product">
         <!-- <ng-content></ng-content> -->
         <br>
-        <br>
+        
         <img [src]="product.picture.large" alt=" ">
-        <input type="text" inputString name="Value" #input value = />
-        <h3 >{{input.value}}</h3>
+       
+        <h3 [contentEditable]="editable" #content inputString>{{product.name.first}}</h3>
+        <ng-container *ngIf="editable==false; else main">
+            <button type="button" display='block'(click)="initialValue()">Done</button>    
+        <button  type="button" display='block' (click)="cancelButton()">Cancel</button> 
+        </ng-container>      
+       
         <ng-content></ng-content>
     </div>  
+    <ng-template #main >
+        
+        <button type="button" display='none'(click)="initialValue()">Done</button>    
+        <button  type="button" display='none' (click)="cancelButton()">Cancel</button> 
+    
+    </ng-template> 
+    
+    
 </div> 
