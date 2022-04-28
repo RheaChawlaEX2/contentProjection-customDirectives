@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { ProductsService } from '../../../products.service';
 // import { Products } from '../../model/products';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 
 
 @Component({
@@ -19,7 +19,7 @@ export class ProductCardListComponent implements OnInit, AfterViewInit {
   
   
 
-  constructor(private productsService: ProductsService,private activatedRoute : ActivatedRoute, private router: Router) {
+  constructor(private productsService: ProductsService,private activatedRoute : ActivatedRoute) {
     this.activatedRoute.params.subscribe((params: Params) => {
       console.log("index",params['id']) ;
       this.parameter = params['id']
@@ -31,14 +31,15 @@ export class ProductCardListComponent implements OnInit, AfterViewInit {
 
 
   ngOnInit(): void {    
-    if(this.parameter!== undefined){
-      this.products = this.productsService.PRODUCTS['results'][this.parameter];
+    if(this.parameter){
+      this.products = [this.productsService.getSingleData(this.parameter)];
+      this.editable = true;
       
-      console.log("single data",this.productsService.PRODUCTS['results'][this.parameter].name.first);
+      
 
     }
     else{
-      this.products = this.productsService.PRODUCTS['results'] ;
+      this.products = this.productsService.getData();
       console.log("multiple data",this.products);
     }
   }
@@ -48,12 +49,11 @@ export class ProductCardListComponent implements OnInit, AfterViewInit {
   
   }
   doneButton(value : any){
-    this.products.name.first = value;
-    // this.productsService.PRODUCTS['results'][this.parameter].name.first = value 
-    this.router.navigate(["/products"]);
+   this.productsService.doneCreateService(value,this.parameter);
   }
+
   cancelButton(){
-    
+    this.productsService.cancelService();
   }
   
 

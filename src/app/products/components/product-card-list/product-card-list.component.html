@@ -1,21 +1,10 @@
-<ng-container *ngIf="products.length>1; else more">
+<ng-container>
     <ng-container *ngFor="let product of products" >
-        <app-product-card *ngIf="product.picture ; else skeleton" [product]="product" [editable]="false">
+        <app-product-card *ngIf="product.picture ; else skeleton" [product]="product" [editable]="editable" (currentValue)="doneButton($event)">
             <ng-container *ngTemplateOutlet="gender; context: {genderPassed : product.gender}"></ng-container>
-            
-        </app-product-card>
-    
-        
+        </app-product-card>        
     </ng-container>
 </ng-container>
-
-<ng-template #more >
-        <app-product-card *ngIf="products.picture ; else skeleton" [product]="products" [editable]="true" (currentValue) = doneButton($event) (currentValue)="cancelButton()">
-            <ng-container *ngTemplateOutlet="gender; context: {genderPassed : products.gender}"></ng-container>
-                   
-        </app-product-card>
-</ng-template>
-
 
 <ng-template #skeleton >
         <br>

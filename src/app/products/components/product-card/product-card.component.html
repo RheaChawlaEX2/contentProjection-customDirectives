@@ -8,18 +8,18 @@
        
         <h3 [contentEditable]="editable" #content inputString>{{product.name.first}}</h3>
         <ng-container *ngIf="editable==false; else main">
-            <button type="button" display='block'(click)="initialValue()">Done</button>    
-        <button  type="button" display='block' (click)="cancelButton()">Cancel</button> 
+            <button type="button" style = "display:'none'"(click)="initialValue()">Done</button>    
+        <button  type="button" style = "display:'none'" (click)="cancelButton()">Cancel</button> 
         </ng-container>      
+        <ng-template #main >
+            <button type="button" style = "display:''"(click)="initialValue()">Done</button>    
+            <button  type="button" style = "display:'inline'" (click)="cancelButton()">Cancel</button> 
+        
+        </ng-template> 
        
         <ng-content></ng-content>
     </div>  
-    <ng-template #main >
-        
-        <button type="button" display='none'(click)="initialValue()">Done</button>    
-        <button  type="button" display='none' (click)="cancelButton()">Cancel</button> 
     
-    </ng-template> 
     
     
 </div> 

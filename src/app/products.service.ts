@@ -1,11 +1,13 @@
+import { getLocaleDateFormat } from '@angular/common';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductsService {
 
-  constructor() { }
+  constructor(private router:Router) { }
 
   PRODUCTS: any =  
     {
@@ -204,5 +206,23 @@ export class ProductsService {
           "version": "1.3"
         }
       }
+
+
+      getData(){
+        return this.PRODUCTS['results'];
+      }
+
+      getSingleData(parameter : number){
+        return this.PRODUCTS['results'][parameter];
+      }
+
+      doneCreateService(newValue : any,parameter:any ){
+        this.PRODUCTS['results'][parameter].name['first'] = newValue;
+        this.router.navigate(["/products"]);
+      }
+      cancelService(){
+        this.router.navigate(["/products"]);
+      }
     
 }
+

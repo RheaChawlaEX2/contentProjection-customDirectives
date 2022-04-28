@@ -12,6 +12,7 @@ export class ProductCardComponent  {
   @Input()
   product? : Products
 
+
   @Input()
   editable? : boolean;
 
