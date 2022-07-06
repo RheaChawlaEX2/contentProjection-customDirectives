@@ -12,7 +12,6 @@ export class ProductCardComponent  {
   @Input()
   product? : Products
 
-
   @Input()
   editable? : boolean;
 
@@ -20,17 +19,9 @@ export class ProductCardComponent  {
 
   @Output() currentValue = new EventEmitter();
   
-
-
-  constructor(private router: Router) {
-    
-   }
-  ngOnInit(): void {
-    
-  }
+  constructor(private router: Router) {}
+  ngOnInit(): void {}
   
-  
-
  initialValue(){
   this.currentValue.emit(this.newContent.nativeElement.textContent);
  }
@@ -38,7 +29,5 @@ export class ProductCardComponent  {
  cancelButton(){
   this.router.navigate(["/products"]);
  }
-
-  
 
 }

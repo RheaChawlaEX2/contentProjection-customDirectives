@@ -5,8 +5,6 @@ import { Directive, ElementRef,HostListener,Input, ViewChild } from '@angular/co
 })
 export class StringDirective {
 
-  
-   
   regex = '^[a-zA-Z]+$';
   
   constructor(private inputElement: ElementRef) {
@@ -16,13 +14,9 @@ export class StringDirective {
    return new RegExp(this.regex).test(event.key) || event.keyCode == 32 ;
   }
 
-
   @HostListener('keyup.space',['$event'])
   onKeyUp(event:KeyboardEvent){
-    // if(this.onKeyPress(event) === true){
-      this.inputElement.nativeElement.textContent = this.titleCaseFormat(this.inputElement.nativeElement.textContent); 
-    // } 
-    
+      this.inputElement.nativeElement.textContent = this.titleCaseFormat(this.inputElement.nativeElement.textContent);     
   }
 
   titleCaseFormat(inputString: any){
@@ -32,8 +26,6 @@ export class StringDirective {
     }).join(' ');
     
   }
-
-
 }
 
 

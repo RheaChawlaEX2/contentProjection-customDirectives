@@ -3,7 +3,5 @@ import { Picture } from "./picture";
 export interface Products{
     gender: string,
     name: Name,           
-    picture: Picture
-    
-    
+    picture: Picture 
 }

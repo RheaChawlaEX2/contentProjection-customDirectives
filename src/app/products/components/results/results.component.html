@@ -1,0 +1,12 @@
+<div>
+    <button (click)='lazyLoadComponent()'>Filter Data</button><br><br>
+    <ng-template #filter></ng-template> 
+</div>
+
+<div>
+<app-result-list *ngFor="let url of imageUrls" [imageUrl]="url"></app-result-list>
+<br><br><br>
+
+<app-pagination *ngFor='let count of resultArr ;let i = index' [count]='i+1' (pageNumber)="currentPage($event)">
+</app-pagination>
+</div>
